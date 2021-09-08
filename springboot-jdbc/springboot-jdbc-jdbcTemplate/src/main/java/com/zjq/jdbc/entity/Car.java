@@ -6,7 +6,7 @@ import lombok.Data;
  * @author zjq
  * @date 2020/3/6 22:11
  * <p>title:</p>
- * <p>company:zjhcsoft</p>
+ * <p>company:zjq</p>
  * <p>description:</p>
  */
 @Data
