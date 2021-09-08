@@ -15,4 +15,5 @@ spring:
           #最小空闲
           min-idle: 0
       timeout: 100000
-
+server:
+  port: 17002
