@@ -18,14 +18,11 @@
     <modules>
         <module>springboot-jdbc-jdbcTemplate</module>
         <module>springboot-jdbc-mybatis</module>
+        <module>springboot-jdbc-multiple-datasources</module>
     </modules>
     <packaging>pom</packaging>
 
 
-
-
-
-
-
+    
 
 </project>
