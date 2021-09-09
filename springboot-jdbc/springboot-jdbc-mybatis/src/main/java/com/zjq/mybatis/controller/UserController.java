@@ -23,31 +23,31 @@ public class UserController {
 
     @GetMapping("/list")
     public List<User> list() {
-        
+
         List<User> list = userService.list();
         return list;
     }
 
     @GetMapping("/{userId}")
-    public void getById(@PathVariable Long userId) {
+    public User getById(@PathVariable Long userId) {
 
-        userService.getById(userId);
+        return userService.getById(userId);
     }
-    
+
     @PostMapping
     public void add(@Validated @RequestBody User user) {
         userService.add(user);
     }
-    
+
     @PutMapping
     public void update(@Validated @RequestBody User user) {
         userService.update(user);
     }
-    
+
     @DeleteMapping("/{userId}")
     public void delete(@PathVariable Long userId) {
 
         userService.deleteById(userId);
     }
-    
+
 }

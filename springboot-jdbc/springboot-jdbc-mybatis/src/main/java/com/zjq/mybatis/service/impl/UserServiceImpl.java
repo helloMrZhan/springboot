@@ -15,11 +15,11 @@ import java.util.List;
  * @Date 2021/9/9
  */
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Override
 	public int add(User user) {
 		return this.userMapper.add(user);

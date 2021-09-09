@@ -44,10 +44,10 @@ public interface UserMapper {
 	 * @return
 	 */
 	@Select("select * from user")
-	@Results(id = "User",value= {
+	@Results(id = "listUser",value= {
 			@Result(property = "username", column = "username", javaType = String.class),
 			@Result(property = "phone", column = "phone", javaType = String.class),
-			@Result(property = "age", column = "age", javaType = String.class)
+			@Result(property = "age", column = "age", javaType = Integer.class)
 	})
 	List<User> list();
 
@@ -68,7 +68,7 @@ public interface UserMapper {
 	@Results(id = "User",value= {
 			@Result(property = "username", column = "username", javaType = String.class),
 			@Result(property = "phone", column = "phone", javaType = String.class),
-			@Result(property = "age", column = "age", javaType = String.class)
+			@Result(property = "age", column = "age", javaType = Integer.class)
 	})
 	User getById(Long userId);
 }
