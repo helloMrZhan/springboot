@@ -6,4 +6,4 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
 server:
-  port: 17002
+  port: 17003
