@@ -1,4 +1,4 @@
-package com.zjq.mybatis.mapper;
+package com.zjq.mybatis.mapper.master;
 
 import com.zjq.mybatis.entity.User;
 import org.apache.ibatis.annotations.Delete;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Component
 @Mapper
-public interface UserMapper {
+public interface MasterUserMapper {
 
 	/**
 	 * 新增用户
@@ -71,4 +71,10 @@ public interface UserMapper {
 			@Result(property = "age", column = "age", javaType = Integer.class)
 	})
 	User getById(Long userId);
+
+	/**
+	 * 获取所有用户 mapper.xml形式
+	 * @return
+	 */
+	List<User> getAllUser();
 }

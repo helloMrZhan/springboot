@@ -50,4 +50,18 @@ public class UserController {
         userService.deleteById(userId);
     }
 
+    @GetMapping("/masterList")
+    public List<User> masterList() {
+
+        List<User> list = userService.getMasterAllUser();
+        return list;
+    }
+
+    @GetMapping("/slaveList")
+    public List<User> slaveList() {
+
+        List<User> list = userService.getSlaveAllUser();
+        return list;
+    }
+
 }

@@ -45,4 +45,15 @@ public interface UserService {
      * @return
      */
     User getById(Long userId);
+
+    /**
+     * 获取主数据库所有用户
+     * @return
+     */
+    List<User> getMasterAllUser();
+    /**
+     * 获取从数据库所有用户
+     * @return
+     */
+    List<User> getSlaveAllUser();
 }
