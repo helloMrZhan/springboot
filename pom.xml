@@ -12,6 +12,7 @@
         <module>springboot-redis</module>
         <module>springboot-thymeleaf</module>
         <module>springboot-jdbc</module>
+        <module>springboot-attribute</module>
     </modules>
     <packaging>pom</packaging>
 
