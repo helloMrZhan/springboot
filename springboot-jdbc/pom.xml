@@ -18,7 +18,8 @@
     <modules>
         <module>springboot-jdbc-jdbcTemplate</module>
         <module>springboot-jdbc-mybatis</module>
-        <module>springboot-jdbc-multiple-datasources</module>
+        <module>springboot-jdbc-mybatis-multiple-datasources</module>
+        <module>springboot-jdbc-jdbcTemplate-multiple-datasources</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springboot-jdbc-multiple-datasources</artifactId>
+    <artifactId>springboot-jdbc-jdbcTemplate-multiple-datasources</artifactId>
 
-    <description>springboot+mybatis多数据源</description>
+    <description>springboot+jdbcTemplate多数据源</description>
 
     <dependencies>
         <dependency>
@@ -25,7 +25,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!--mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
