@@ -20,10 +20,12 @@
         <module>springboot-jdbc-mybatis</module>
         <module>springboot-jdbc-mybatis-multiple-datasources</module>
         <module>springboot-jdbc-jdbcTemplate-multiple-datasources</module>
+        <module>springboot-jdbc-mybatis-plus</module>
+        <module>springboot-jdbc-mybatis-plus-multiple</module>
     </modules>
     <packaging>pom</packaging>
 
 
-    
+
 
 </project>
