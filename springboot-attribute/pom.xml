@@ -11,10 +11,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springboot-attribute</artifactId>
+    <packaging>pom</packaging>
 
     <description>springboot属性相关</description>
     <modules>
         <module>springboot-properties</module>
+        <module>springboot-aop</module>
     </modules>
 
 </project>
