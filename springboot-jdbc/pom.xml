@@ -22,6 +22,7 @@
         <module>springboot-jdbc-jdbcTemplate-multiple-datasources</module>
         <module>springboot-jdbc-mybatis-plus</module>
         <module>springboot-jdbc-mybatis-plus-multiple</module>
+        <module>springboot-jdbc-mybatis-tk</module>
     </modules>
     <packaging>pom</packaging>
 
