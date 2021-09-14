@@ -23,6 +23,7 @@
         <module>springboot-jdbc-mybatis-plus</module>
         <module>springboot-jdbc-mybatis-plus-multiple</module>
         <module>springboot-jdbc-mybatis-tk</module>
+        <module>springboot-jdbc-jpa</module>
     </modules>
     <packaging>pom</packaging>
 
