@@ -1,0 +1,6 @@
+server:
+  port: 17004
+my:
+  name: zjq-dev
+  address: zjq-hs
+  feature: 非常66
