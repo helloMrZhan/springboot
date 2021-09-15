@@ -13,6 +13,7 @@
         <module>springboot-thymeleaf</module>
         <module>springboot-jdbc</module>
         <module>springboot-attribute</module>
+        <module>springboot-email</module>
     </modules>
     <packaging>pom</packaging>
 
