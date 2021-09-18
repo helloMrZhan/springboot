@@ -9,8 +9,8 @@ server:
   port: 17003
 logging:
   level:
-    com.xkcoding: debug
-    com.xkcoding.orm.mybatis.plus.mapper: trace
+    com.zjq: debug
+    com.zjq.mybatisplus.mapper: trace
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   #实体扫描，多个package用逗号或者分号分隔
