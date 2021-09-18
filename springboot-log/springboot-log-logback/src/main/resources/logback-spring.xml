@@ -75,7 +75,7 @@
 
 	<!-- 不同环境的日志级别配置 -->
 	<springProfile name="dev">
-		<logger name="com.zbsz.cloud" level="DEBUG"/>
+		<logger name="com.zjq.logback" level="DEBUG"/>
 	</springProfile>
 
 	<root level="DEBUG">
