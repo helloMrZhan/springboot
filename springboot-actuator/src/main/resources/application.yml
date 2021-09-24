@@ -1,0 +1,15 @@
+server:
+  port: 17003
+management:
+  endpoint:
+    #打开shutdown的endpoint
+    shutdown:
+      enabled: true
+    health:
+      #显示健康的详细信息
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        #暴露所有端口，默认打开health,info
+        include: '*'
