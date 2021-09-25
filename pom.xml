@@ -16,6 +16,7 @@
         <module>springboot-email</module>
         <module>springboot-log</module>
         <module>springboot-actuator</module>
+        <module>springboot-upload</module>
     </modules>
     <packaging>pom</packaging>
 
