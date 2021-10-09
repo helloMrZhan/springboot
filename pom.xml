@@ -17,6 +17,7 @@
         <module>springboot-log</module>
         <module>springboot-actuator</module>
         <module>springboot-upload</module>
+        <module>springboot-task</module>
     </modules>
     <packaging>pom</packaging>
 
