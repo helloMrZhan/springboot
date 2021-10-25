@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * <p>spring自带的调度</p>
+ * <p>springboot自带的调度</p>
  *
  * @Author zjq
  * @Date 2021/10/8
