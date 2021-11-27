@@ -18,6 +18,7 @@
         <module>springboot-actuator</module>
         <module>springboot-upload</module>
         <module>springboot-task</module>
+        <module>springboot-canal</module>
     </modules>
     <packaging>pom</packaging>
 

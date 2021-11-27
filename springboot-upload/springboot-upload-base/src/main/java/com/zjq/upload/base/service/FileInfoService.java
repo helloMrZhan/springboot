@@ -11,10 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,20 +51,20 @@ public class FileInfoService {
     public ResponseInfo<?> upload(MultipartFile file) throws BusinessException {
         //基础路径  E:/springboot-upload/image/
         String basePath = uploadConfigure.getBasePath();
-        //获取文件保存路径 \20180608\113339\
+        //获取文件保存路径 \20200608\113339\
         String folder = FileUtils.getFolder();
         // 获取前缀为"FL_" 长度为20 的文件名  FL_eUljOejPseMeDg86h.png
         String fileName = FileUtils.getFileName() + FileUtils.getFileNameSub(file.getOriginalFilename());
 
         try {
-            // E:\springboot-upload\image\20180608\113339
+            // E:\springboot-upload\image\20200608\113339
             Path filePath = Files.createDirectories(Paths.get(basePath, folder));
             log.info("path01-->{}", filePath);
 
-            //写入文件  E:\springboot-upload\image\20180608\113339\FL_eUljOejPseMeDg86h.png
+            //写入文件  E:\springboot-upload\image\20200608\113339\FL_eUljOejPseMeDg86h.png
             Path fullPath = Paths.get(basePath, folder, fileName);
             log.info("fullPath-->{}", fullPath);
-            // E:\springboot-upload\image\20180608\113339\FL_eUljOejPseMeDg86h.png
+            // E:\springboot-upload\image\20200608\113339\FL_eUljOejPseMeDg86h.png
             Files.write(fullPath, file.getBytes(), StandardOpenOption.CREATE);
 
             //保存文件信息

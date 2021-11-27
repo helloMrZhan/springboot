@@ -26,7 +26,7 @@ public class DateUtils {
     }
 
     /**
-     * 获取当前系统日期 , 格式:"yyyyMMdd"  如:20180608
+     * 获取当前系统日期 , 格式:"yyyyMMdd"  如:20200608
      * @return
      */
     public static String getCurrentDateString() {
@@ -108,7 +108,7 @@ public class DateUtils {
 
     /**
      * 输入日期类型变量，返回日期字符串
-     * 如:2018-06-08 15:46:09
+     * 如:2020-06-08 15:46:09
      *
      * @param date
      * @return String
