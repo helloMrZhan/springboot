@@ -27,7 +27,6 @@ public class DealCanalEventListener implements CanalEventListener {
      * @param dbOptions
      * @return
      * @time 2020/5/30 17:46
-     * @CopyRight 杭州弧途科技有限公司（青团社）
      */
     public DealCanalEventListener(AbstractDBOption... dbOptions) {
         AbstractDBOption tmp = null;
