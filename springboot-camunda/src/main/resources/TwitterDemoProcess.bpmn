@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.signavio.com/bpmn20" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Camunda Modeler" exporterVersion="3.5.0" expressionLanguage="http://www.w3.org/1999/XPath" id="_1643100360714" name="" targetNamespace="http://www.signavio.com/bpmn20" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <process id="TwitterDemoProcess" isClosed="false" isExecutable="true" name="TwitterDemoProcess" processType="None">
+    <extensionElements>
+      <yaoqiang:description/>
+      <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
+    </extensionElements>
+    <serviceTask camunda:delegateExpression="#{emailAdapter}" completionQuantity="1" id="service_task_send_rejection_notification" implementation="##WebService" isForCompensation="false" name="Send rejection notification" startQuantity="1">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="KPI-Ratio" value="Tweet Rejected"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <incoming>no</incoming>
+      <outgoing>SequenceFlow_4</outgoing>
+    </serviceTask>
+    <sequenceFlow id="SequenceFlow_4" sourceRef="service_task_send_rejection_notification" targetRef="gateway_join"/>
+    <exclusiveGateway gatewayDirection="Unspecified" id="gateway_approved" name="Approved?">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="KPI-Cycle-End" value="Tweet Approval Time"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>no</outgoing>
+      <outgoing>yes</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="no" name="no" sourceRef="gateway_approved" targetRef="service_task_send_rejection_notification">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="probability" value="13"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <conditionExpression id="FormalExpression_1" xsi:type="tFormalExpression"><![CDATA[#{!approved}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="yes" name="yes" sourceRef="gateway_approved" targetRef="service_task_publish_on_twitter">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="probability" value="87"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <conditionExpression id="FormalExpression_2" xsi:type="tFormalExpression"><![CDATA[#{approved}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway gatewayDirection="Unspecified" id="gateway_join" name="Join">
+      <incoming>SequenceFlow_4</incoming>
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>SequenceFlow_5</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_5" sourceRef="gateway_join" targetRef="end_event_tweet_handled"/>
+    <serviceTask camunda:delegateExpression="#{tweetAdapter}" completionQuantity="1" id="service_task_publish_on_twitter" implementation="##WebService" isForCompensation="false" name="Publish on Twitter" startQuantity="1">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="KPI-Ratio" value="Tweet Approved"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <incoming>yes</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </serviceTask>
+    <sequenceFlow id="SequenceFlow_3" sourceRef="service_task_publish_on_twitter" targetRef="gateway_join"/>
+    <endEvent id="end_event_tweet_handled" name="Tweet handled">
+      <incoming>SequenceFlow_5</incoming>
+      <inputSet/>
+    </endEvent>
+    <startEvent camunda:formKey="embedded:app:forms/createTweet.html" camunda:initiator="initiator" id="start_event_new_tweet" isInterrupting="true" name="Tweet written" parallelMultiple="false">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="KPI-Cycle-Start" value="Tweet Approval Time"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <outgoing>SequenceFlow_9</outgoing>
+      <outputSet/>
+    </startEvent>
+    <sequenceFlow id="SequenceFlow_9" sourceRef="start_event_new_tweet" targetRef="user_task_review_tweet"/>
+    <userTask camunda:assignee="demo" camunda:formKey="embedded:app:forms/reviewTweet.html" completionQuantity="1" id="user_task_review_tweet" implementation="##unspecified" isForCompensation="false" name="Review Tweet" startQuantity="1">
+      <extensionElements>
+        <camunda:properties>
+          <properties>
+            <properties>
+              <properties>
+                <camunda:property name="durationMean" value="10000"/>
+                <camunda:property name="durationSd" value="5000"/>
+              </properties>
+            </properties>
+          </properties>
+        </camunda:properties>
+      </extensionElements>
+      <incoming>SequenceFlow_9</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </userTask>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="user_task_review_tweet" targetRef="gateway_approved"/>
+  </process>
+  <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-TwitterDemoProcess" name="Untitled Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="TwitterDemoProcess">
+      <bpmndi:BPMNShape bpmnElement="start_event_new_tweet" id="Yaoqiang-start_event_new_tweet">
+        <omgdc:Bounds height="32.0" width="32.0" x="178.0" y="179.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="74.0" x="156.0" y="209.93"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="user_task_review_tweet" id="Yaoqiang-user_task_review_tweet">
+        <omgdc:Bounds height="80.0" width="100.0" x="270.0" y="155.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="77.0" x="281.5" y="186.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_approved" id="Yaoqiang-gateway_approved" isMarkerVisible="true">
+        <omgdc:Bounds height="42.0" width="42.0" x="430.0" y="174.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="60.0" x="466.5" y="207.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="service_task_publish_on_twitter" id="Yaoqiang-service_task_publish_on_twitter">
+        <omgdc:Bounds height="80.0" width="100.0" x="532.0" y="215.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="37.02" width="55.0" x="554.5" y="238.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="service_task_send_rejection_notification" id="Yaoqiang-service_task_send_rejection_notification">
+        <omgdc:Bounds height="80.0" width="100.0" x="532.0" y="95.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="37.02" width="75.0" x="544.5" y="118.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="gateway_join" id="Yaoqiang-gateway_join" isMarkerVisible="true">
+        <omgdc:Bounds height="42.0" width="42.0" x="692.0" y="114.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="25.0" x="730.0" y="147.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end_event_tweet_handled" id="Yaoqiang-end_event_tweet_handled">
+        <omgdc:Bounds height="32.0" width="32.0" x="794.0" y="119.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="78.0" x="769.5" y="147.93"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="yes" id="Yaoqiang-yes">
+        <omgdi:waypoint x="472.0" y="195.0"/>
+        <omgdi:waypoint x="532.5" y="255.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="37.02" width="66.0" x="469.0" y="206.74"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="Yaoqiang-SequenceFlow_9">
+        <omgdi:waypoint x="210.49218559171948" y="195.0"/>
+        <omgdi:waypoint x="270.5" y="195.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="6.0" x="237.5" y="184.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_5" id="Yaoqiang-SequenceFlow_5">
+        <omgdi:waypoint x="734.0" y="135.0"/>
+        <omgdi:waypoint x="794.5078144082805" y="135.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="6.0" x="761.25" y="124.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_4" id="Yaoqiang-SequenceFlow_4">
+        <omgdi:waypoint x="632.5" y="135.0"/>
+        <omgdi:waypoint x="693.0" y="135.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="6.0" x="659.75" y="124.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_3" id="Yaoqiang-SequenceFlow_3">
+        <omgdi:waypoint x="632.5" y="255.0"/>
+        <omgdi:waypoint x="693.0" y="135.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="6.0" x="659.0" y="183.74"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_2" id="Yaoqiang-SequenceFlow_2">
+        <omgdi:waypoint x="370.5" y="195.0"/>
+        <omgdi:waypoint x="431.0" y="195.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="21.02" width="6.0" x="397.75" y="184.49"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="no" id="Yaoqiang-no">
+        <omgdi:waypoint x="472.0" y="195.0"/>
+        <omgdi:waypoint x="532.5" y="135.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="37.02" width="68.0" x="468.0" y="146.24"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
