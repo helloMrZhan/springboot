@@ -1,7 +1,11 @@
 spring:
   mail:
-    host: smtp.qq.com
-    username: 1187625098@qq.com
+    #QQ邮箱需要配置的host
+    #host: smtp.qq.com
+    #username: 1187625098@qq.com
+    #阿里云企业邮箱需要配置的host
+    host: smtp.qiye.aliyun.com
+    username: zhanjq@ali.com
     #对于qq邮箱而言 密码指的就是发送方的授权码
     #如果是FoxMail邮箱则需要设置账号的真实密码
     password: xxx
