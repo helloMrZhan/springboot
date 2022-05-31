@@ -1,6 +1,6 @@
 package com.zjq.properties.controller;
 
-import com.zjq.properties.config.PropertiesConfig;
+import com.zjq.properties.config.CustomPropertiesConfig;
 import com.zjq.properties.config.RedisConfig;
 import com.zjq.properties.config.YmlConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class PropertiesController {
 
     @Autowired
-    private PropertiesConfig propertiesConfig;
+    private CustomPropertiesConfig customPropertiesConfig;
     @Autowired
     private RedisConfig redisConfig;
     @Autowired
@@ -25,7 +25,7 @@ public class PropertiesController {
 
     @GetMapping("/prop")
     public String prop() {
-        return propertiesConfig.toString();
+        return customPropertiesConfig.toString();
     }
 
     @GetMapping("/redis")

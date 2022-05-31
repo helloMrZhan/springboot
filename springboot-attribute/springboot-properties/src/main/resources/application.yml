@@ -9,5 +9,34 @@ spring:
     active: dev
 server:
   port: 17003
+  servlet:
+    context-path: /zjq-yml
+zjq-yml:
+  id: 666
+  username: 共饮一杯无
+  hobby:
+    - 爬山
+    - 羽毛球
+    - 篮球
+  family: [father,mother,wife]
+  #缩进式写法
+#  map:
+#    name: 共饮一杯无
+#    feature: 相当哇塞
+  #行内式写法
+  map: {"name":"共饮一杯无","feature":"相当哇塞"}
+  goods: {"id":"666","name":"宇宙飞船"}
 
 
+####### 随机数
+myrandom:
+  secret: ${random.value} # 配置随机值
+  number: ${random.int} #配置随机整数
+  bignumber: ${random.long} # 配置随机long类型数
+  uuid: ${random.uuid} # 配置随机uuid类型数
+#  number:
+#    less:
+#      than:
+#        ten: ${random.int(10)} #配置小于10的随机整数
+#    in:
+#      range: ${random.int[1024,65536]} # 配置范围在[ 1024,65536]之间的随机整数

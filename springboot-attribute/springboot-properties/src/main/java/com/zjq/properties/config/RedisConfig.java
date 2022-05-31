@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
+ * Redis配置
  * @author zjq
  * @date 2021/9/11
  * <p>title:</p>

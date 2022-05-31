@@ -18,15 +18,13 @@ import java.util.Map;
  *  @Component  把PropertiesConfig类作为Bean到spring容器中，只有这样才能@ConfigurationProperties注解进行赋值
  * </p>
  */
-@ConfigurationProperties(prefix = "zjq-yml")
+@ConfigurationProperties(prefix = "myrandom")
 @Component
 @Data
-public class YmlConfig {
+public class RandomConfig {
 
-    private Integer id;
-    private String username;
-    private List hobby;
-    private String[] family;
-    private Map map;
-    private Goods goods;
+    private String secret;
+    private Integer number;
+    private Long bignumber;
+    private String uuid;
 }

@@ -4,3 +4,13 @@ my:
   name: zjq-dev
   address: zjq-小溪
   feature: 帅的雅痞
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: f70bfdsfb-6fdsf3-43fd-9eba-8a5dsfsge81
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
