@@ -19,6 +19,7 @@
         <module>springboot-upload</module>
         <module>springboot-task</module>
         <module>springboot-canal</module>
+        <module>springboot-activiti</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -26,7 +27,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <version>2.7.3</version>
     </parent>
 
 
