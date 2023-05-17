@@ -45,4 +45,11 @@ public interface UserService {
      * @return
      */
     User getById(Long userId);
+
+
+    /**
+     * 新增并且更新用户
+     * @param user
+     */
+    void addAndUpdate(User user);
 }

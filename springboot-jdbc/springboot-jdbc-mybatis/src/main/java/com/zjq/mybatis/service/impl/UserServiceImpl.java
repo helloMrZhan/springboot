@@ -5,6 +5,7 @@ import com.zjq.mybatis.mapper.UserMapper;
 import com.zjq.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -45,5 +46,15 @@ public class UserServiceImpl implements UserService {
 		return this.userMapper.getById(userId);
 	}
 
+	@Override
+	public void addAndUpdate(User user) {
+		addAndUpdateUser(user);
+	}
+
+
+	@Transactional
+	private void addAndUpdateUser(User user){
+
+	}
 
 }

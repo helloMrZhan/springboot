@@ -50,4 +50,9 @@ public class UserController {
         userService.deleteById(userId);
     }
 
+
+    @PostMapping
+    public void addAndUpdate(@Validated @RequestBody User user) {
+        userService.addAndUpdate(user);
+    }
 }
