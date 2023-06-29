@@ -20,6 +20,7 @@
         <module>springboot-task</module>
         <module>springboot-canal</module>
         <module>springboot-activiti</module>
+        <module>springboot-security</module>
     </modules>
     <packaging>pom</packaging>
 
