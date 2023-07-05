@@ -1,0 +1,48 @@
+server:
+  #端口设置
+  port: 17006
+  servlet:
+    session:
+      # session超时时间
+      timeout: 600
+spring:
+  session:
+    # session持久化类型
+    store-type: redis
+  thymeleaf:
+    #视图解析器的前缀放在这个文件夹
+    prefix: classpath:/templates/
+    #后缀
+    suffix: .html
+    #模式
+    mode: LEGACYHTML5
+    servlet:
+      content-type: text/html
+    #编码格式
+    encoding: utf-8
+    #不用缓存
+    cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+
+  ## 数据库相关设置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/security_management
+    username: root
+    password: root
+
+  ## redis相关配置
+  # Redis数据库索引（默认为0）
+  redis:
+    database: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:

@@ -21,6 +21,7 @@
         <module>springboot-canal</module>
         <module>springboot-activiti</module>
         <module>springboot-security</module>
+        <module>springboot-security-thymeleaf</module>
     </modules>
     <packaging>pom</packaging>
 
