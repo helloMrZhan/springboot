@@ -47,4 +47,11 @@ public class CarController {
     }
 
 
+    @RequestMapping(value = "/set")
+    public void setCar() {
+        // redis Set新增和查询案例
+
+    }
+
+
 }
