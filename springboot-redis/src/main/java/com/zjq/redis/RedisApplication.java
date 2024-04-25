@@ -36,6 +36,7 @@ public class RedisApplication {
 		ObjectMapper objectMapper = new ObjectMapper();
 		// 指定要序列化的域，field,get和set,以及修饰符范围，ANY是都有包括private和public
 		objectMapper.setVisibility(PropertyAccessor.ALL,JsonAutoDetect.Visibility.ANY);
+		objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 		jacksonSeial.setObjectMapper(objectMapper);
 
 		// 使用RedisTemplate对象

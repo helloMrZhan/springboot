@@ -1,25 +1,26 @@
 package com.zjq.redis.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
 
 /**
- *
  * @author zjq
- * @date 2020/3/6 22:11
- * <p>title:</p>
- * <p>company:zjq</p>
- * <p>description:</p>
+ * @Description:
  */
 @Data
 @ToString
-public class Car implements Serializable{
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person{
 
     private Integer id;
 
     private String name;
 
-    private String color;
+    private Integer age;
+
 }
