@@ -186,4 +186,32 @@ public class RedisApplicationTests {
         String cityName = operations.pop("city");
         System.out.println("移除并返回集合中的一个随机元素：" + cityName);
     }
+
+
+    /**
+     * Redis ZSet类型测试
+     */
+    @Test
+    public void redisZSetTest() throws Exception {
+        // 向有序集合中添加数据
+        ZSetOperations<String, String> operations = redisTemplate.opsForZSet();
+        //向有序集合中添加元素,set元素具有唯一性
+        operations.add("userName", "zhangsan", 100);
+        operations.add("userName", "lisi", 95);
+        operations.add("userName", "wangwu", 75);
+        operations.add("userName", "zhaoliu", 85);
+
+        //获取变量指定区间的元素。0, -1表示全部
+        Set<String> ranges = operations.range("userName", 0, -1);
+        System.out.println("获取有序集合所有元素：" + JSON.toJSONString(ranges));
+        Set<String> byScores = operations.rangeByScore("userName", 85, 100);
+        System.out.println("获取有序集合所有元素（按分数从小到大）："+ JSON.toJSONString(byScores));
+        Long zCard = operations.zCard("userName");
+        System.out.println("获取有序集合成员数: " + zCard);
+        Long remove = operations.remove("userName", "zhaoliu");
+        System.out.println("删除某个成员数结果: " + remove);
+        Set<String> ranges1 = operations.range("userName", 0, -1);
+        System.out.println("获取有序集合所有元素：" + JSON.toJSONString(ranges1));
+
+    }
 }
