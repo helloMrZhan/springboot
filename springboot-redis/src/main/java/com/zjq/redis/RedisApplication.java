@@ -6,10 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.scripting.support.ResourceScriptSource;
 
 /**
  * Redis Application
@@ -55,6 +58,15 @@ public class RedisApplication {
 		//执行后续方法
 		template.afterPropertiesSet();
 		return template;
+	}
+
+
+	@Bean
+	public DefaultRedisScript<Long> limitScript() {
+		DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
+		redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("lua/limit.lua")));
+		redisScript.setResultType(Long.class);
+		return redisScript;
 	}
 }
 

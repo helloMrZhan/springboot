@@ -1,5 +1,6 @@
 package com.zjq.redis.controller;
 
+import com.zjq.redis.constant.RateLimiter;
 import com.zjq.redis.entity.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,6 +30,7 @@ public class CarController {
     StringRedisTemplate stringRedisTemplate;
 
     @RequestMapping(value = "/get")
+    @RateLimiter(time = 1,count = 3)
     public Map getCar() {
         Map map = new HashMap(16);
         ValueOperations valueOperations = stringRedisTemplate.opsForValue();

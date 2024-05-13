@@ -1,9 +1,11 @@
 package com.zjq.redis.test;
 
 import com.alibaba.fastjson.JSON;
-import com.zjq.redis.entity.Car;
 import com.zjq.redis.entity.Person;
+import com.zjq.redis.service.DistributedLock;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
@@ -23,6 +25,12 @@ public class RedisApplicationTests {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Mock
+    private StringRedisTemplate stringRedisTemplate;
+
+    @InjectMocks
+    private DistributedLock distributedLock;
 
     @Test
     public void redisConnectTest(){
@@ -214,4 +222,7 @@ public class RedisApplicationTests {
         System.out.println("获取有序集合所有元素：" + JSON.toJSONString(ranges1));
 
     }
+
+
+
 }
