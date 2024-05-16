@@ -1,6 +1,7 @@
 package com.zjq.redis.test;
 
 import com.alibaba.fastjson.JSON;
+import com.zjq.redis.counter.RedisTemplateCounter;
 import com.zjq.redis.entity.Person;
 import com.zjq.redis.service.DistributedLock;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,9 @@ public class RedisApplicationTests {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private RedisTemplateCounter redisTemplateCounter;
 
     @Mock
     private StringRedisTemplate stringRedisTemplate;
@@ -223,6 +227,20 @@ public class RedisApplicationTests {
 
     }
 
+
+
+    /**
+     * RedisTemplate实现计数器
+     */
+    @Test
+    public void redisTemplateCounterTest() throws Exception {
+        redisTemplateCounter.incrementCounter("redisTemplateCounter");
+        redisTemplateCounter.incrementCounter("redisTemplateCounter");
+        redisTemplateCounter.incrementCounter("redisTemplateCounter");
+        redisTemplateCounter.incrementCounter("redisTemplateCounter");
+        redisTemplateCounter.incrementCounter("redisTemplateCounter");
+        System.out.println("redisTemplateCounter:"+redisTemplateCounter.getCounterValue("redisTemplateCounter"));
+    }
 
 
 }
