@@ -27,7 +27,7 @@ public interface UserMapper {
 	 * @param user
 	 * @return
 	 */
-	@Insert("insert into user(username,phone,age) values(#{username},#{phone},#{age})")
+	@Insert("insert into user(username,password,phone,age) values(#{username},#{password},#{phone},#{age})")
 	int add(User user);
 
 	/**
@@ -35,7 +35,7 @@ public interface UserMapper {
 	 * @param user
 	 * @return
 	 */
-	@Update("update user set username=#{username},phone=#{phone},age=#{age} where id =#{id}")
+	@Update("update user set username=#{username},password=#{password},phone=#{phone},age=#{age} where id =#{id}")
     int update(User user);
 
 

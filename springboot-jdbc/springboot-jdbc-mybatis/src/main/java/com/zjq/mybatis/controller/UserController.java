@@ -1,5 +1,6 @@
 package com.zjq.mybatis.controller;
 
+import com.zjq.mybatis.common.R;
 import com.zjq.mybatis.entity.User;
 import com.zjq.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,37 +23,36 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/list")
-    public List<User> list() {
+    public R list() {
 
         List<User> list = userService.list();
-        return list;
+        return R.ok(list);
     }
 
     @GetMapping("/{userId}")
-    public User getById(@PathVariable Long userId) {
+    public R getById(@PathVariable Long userId) {
 
-        return userService.getById(userId);
+        return R.ok(userService.getById(userId));
     }
 
     @PostMapping
-    public void add(@Validated @RequestBody User user) {
+    public R add(@Validated @RequestBody User user) {
         userService.add(user);
+        return R.ok("新增成功");
     }
 
     @PutMapping
-    public void update(@Validated @RequestBody User user) {
+    public R update(@Validated @RequestBody User user) {
         userService.update(user);
+        return R.ok("更新成功");
     }
 
     @DeleteMapping("/{userId}")
-    public void delete(@PathVariable Long userId) {
+    public R delete(@PathVariable Long userId) {
 
         userService.deleteById(userId);
+        return R.ok("删除成功");
     }
 
 
-    @PostMapping
-    public void addAndUpdate(@Validated @RequestBody User user) {
-        userService.addAndUpdate(user);
-    }
 }
