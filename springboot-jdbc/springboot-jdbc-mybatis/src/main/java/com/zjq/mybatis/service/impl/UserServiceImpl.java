@@ -1,5 +1,6 @@
 package com.zjq.mybatis.service.impl;
 
+import com.google.common.collect.Sets;
 import com.zjq.mybatis.entity.User;
 import com.zjq.mybatis.mapper.UserMapper;
 import com.zjq.mybatis.service.UserService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -55,6 +57,16 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	private void addAndUpdateUser(User user){
 
+	}
+
+	public static void main(String[] args) {
+		boolean contains1 = Sets.newHashSet("02", "03").contains("02");
+		System.out.println(contains1);
+		HashSet<Object> set = new HashSet<>();
+		set.add("02");
+		set.add("03");
+		boolean contains = set.contains("02");
+		System.out.println(contains);
 	}
 
 }

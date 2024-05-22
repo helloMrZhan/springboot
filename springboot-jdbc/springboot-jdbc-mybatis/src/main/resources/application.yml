@@ -5,5 +5,7 @@ spring:
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  mapper-locations: classpath*:**/*Mapper.xml, classpath*:/mybatis-mapper/*.xml
 server:
   port: 17003
