@@ -1,14 +1,10 @@
 package com.zjq.mybatis.service.impl;
 
-import com.google.common.collect.Sets;
 import com.zjq.mybatis.entity.User;
-import com.zjq.mybatis.mapper.UserMapper;
+import com.zjq.mybatis.mapper.UserXMLMapper;
 import com.zjq.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -18,55 +14,35 @@ import java.util.List;
  * @Date 2021/9/9
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserXMLServiceImpl implements UserService {
 
-	@Autowired
-	private UserMapper userMapper;
+    @Autowired
+    private UserXMLMapper userXMLMapper;
 
-	@Override
-	public int add(User user) {
-		return this.userMapper.add(user);
-	}
+    @Override
+    public int add(User user) {
+        return this.userXMLMapper.add(user);
+    }
 
-	@Override
-	public int update(User user) {
-		return this.userMapper.update(user);
-	}
+    @Override
+    public int update(User user) {
+        return this.userXMLMapper.update(user);
+    }
 
-	@Override
-	public List<User> list() {
-		return this.userMapper.list();
-	}
+    @Override
+    public List<User> list() {
+        return this.userXMLMapper.list();
+    }
 
-	@Override
-	public int deleteById(Long userId) {
-		return this.userMapper.deleteById(userId);
-	}
+    @Override
+    public int deleteById(Long userId) {
+        return this.userXMLMapper.deleteById(userId);
+    }
 
-	@Override
-	public User getById(Long userId) {
-		return this.userMapper.getById(userId);
-	}
+    @Override
+    public User getById(Long userId) {
+        return this.userXMLMapper.getById(userId);
+    }
 
-	@Override
-	public void addAndUpdate(User user) {
-		addAndUpdateUser(user);
-	}
-
-
-	@Transactional
-	private void addAndUpdateUser(User user){
-
-	}
-
-	public static void main(String[] args) {
-		boolean contains1 = Sets.newHashSet("02", "03").contains("02");
-		System.out.println(contains1);
-		HashSet<Object> set = new HashSet<>();
-		set.add("02");
-		set.add("03");
-		boolean contains = set.contains("02");
-		System.out.println(contains);
-	}
 
 }

@@ -48,17 +48,6 @@ public class UserServiceImpl implements UserService {
 		return this.userMapper.getById(userId);
 	}
 
-	@Override
-	public void addAndUpdate(User user) {
-		addAndUpdateUser(user);
-	}
-
-
-	@Transactional
-	private void addAndUpdateUser(User user){
-
-	}
-
 	public static void main(String[] args) {
 		boolean contains1 = Sets.newHashSet("02", "03").contains("02");
 		System.out.println(contains1);

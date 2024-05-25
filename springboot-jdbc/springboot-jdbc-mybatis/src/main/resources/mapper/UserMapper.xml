@@ -11,8 +11,8 @@
     </resultMap>
 
     <!--删除操作-->
-    <delete id="deleteById" parameterType="int">
-        delete from user where id=#{userId}
+    <delete id="deleteById" parameterType="long">
+        delete from user where id=#{id}
     </delete>
 
     <!--修改操作-->
@@ -31,7 +31,7 @@
     </select>
 
     <!--根据id进行查询-->
-    <select id="getById" resultType="com.zjq.mybatis.entity.User" parameterType="int">
+    <select id="getById" resultType="com.zjq.mybatis.entity.User" parameterType="long">
         select * from user where id=#{id}
     </select>
 

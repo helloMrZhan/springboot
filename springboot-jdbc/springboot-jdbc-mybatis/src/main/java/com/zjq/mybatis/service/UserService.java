@@ -1,12 +1,10 @@
 package com.zjq.mybatis.service;
 
 import com.zjq.mybatis.entity.User;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
- * <p>用户</p>
+ * <p>用户service</p>
  *
  * @Author zjq
  * @Date 2021/9/9
@@ -47,9 +45,4 @@ public interface UserService {
     User getById(Long userId);
 
 
-    /**
-     * 新增并且更新用户
-     * @param user
-     */
-    void addAndUpdate(User user);
 }

@@ -4,6 +4,7 @@ import com.zjq.mybatis.common.R;
 import com.zjq.mybatis.entity.User;
 import com.zjq.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
+    @Qualifier("userXMLServiceImpl")
     private UserService userService;
 
     @GetMapping("/list")

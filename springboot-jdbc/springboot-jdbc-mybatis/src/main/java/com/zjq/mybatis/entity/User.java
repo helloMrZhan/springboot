@@ -3,7 +3,6 @@ package com.zjq.mybatis.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
 
 /**
  * <p>用户实体</p>
@@ -12,7 +11,7 @@ import java.io.Serializable;
  * @Date 2021/9/9
  */
 @Data
-public class User implements Serializable {
+public class User {
 
     /**
      * 用户的唯一标识符

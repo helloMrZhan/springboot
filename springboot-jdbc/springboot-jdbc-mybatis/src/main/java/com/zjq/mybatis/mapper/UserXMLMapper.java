@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * <p>用户</p>
+ * <p>用户mapper</p>
  *
  * @Author zjq
  * @Date 2021/9/9
@@ -39,15 +39,15 @@ public interface UserXMLMapper {
 
 	/**
 	 * 通过id删除用户
-	 * @param userId
+	 * @param id
 	 * @return
 	 */
-	int deleteById(Long userId);
+	int deleteById(Long id);
 
 	/**
 	 * 通过id查询用户
-	 * @param userId
+	 * @param id
 	 * @return
 	 */
-	User getById(Long userId);
+	User getById(Long id);
 }
