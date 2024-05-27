@@ -3,6 +3,8 @@ package com.zjq.mybatis.entity;
 
 import lombok.Data;
 
+import java.util.List;
+
 
 /**
  * <p>用户实体</p>
@@ -37,4 +39,9 @@ public class User {
      * 年龄。
      */
     private Integer age;
+
+    /**
+     * 代表当前用户具备哪些订单
+     */
+    private List<Order> orderList;
 }

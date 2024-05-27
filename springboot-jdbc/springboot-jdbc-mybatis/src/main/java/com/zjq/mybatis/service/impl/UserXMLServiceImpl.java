@@ -44,5 +44,10 @@ public class UserXMLServiceImpl implements UserService {
         return this.userXMLMapper.getById(userId);
     }
 
+    @Override
+    public List<User> findAllUserAndOrders() {
+        return  this.userXMLMapper.findAllUserAndOrders();
+    }
+
 
 }

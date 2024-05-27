@@ -45,4 +45,9 @@ public interface UserService {
     User getById(Long userId);
 
 
+    /**
+     * 获取所有用户和订单信息
+     * @return
+     */
+    List<User> findAllUserAndOrders();
 }

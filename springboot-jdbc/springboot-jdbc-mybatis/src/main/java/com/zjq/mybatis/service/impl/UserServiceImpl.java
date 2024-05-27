@@ -48,14 +48,9 @@ public class UserServiceImpl implements UserService {
 		return this.userMapper.getById(userId);
 	}
 
-	public static void main(String[] args) {
-		boolean contains1 = Sets.newHashSet("02", "03").contains("02");
-		System.out.println(contains1);
-		HashSet<Object> set = new HashSet<>();
-		set.add("02");
-		set.add("03");
-		boolean contains = set.contains("02");
-		System.out.println(contains);
+	@Override
+	public List<User> findAllUserAndOrders() {
+		return null;
 	}
 
 }

@@ -56,5 +56,9 @@ public class UserController {
         return R.ok("删除成功");
     }
 
+    @GetMapping("/findAllUserAndOrders")
+    public R findAllUserAndOrders() {
 
+        return R.ok(userService.findAllUserAndOrders());
+    }
 }

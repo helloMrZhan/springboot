@@ -10,6 +10,19 @@
         <result column="age" property="age" />
     </resultMap>
 
+    <resultMap id="userMap" type="com.zjq.mybatis.entity.User">
+        <result column="id" property="id"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="phone" property="phone"></result>
+        <result column="age" property="age"></result>
+        <collection property="orderList" ofType="com.zjq.mybatis.entity.Order">
+            <result column="oid" property="id"></result>
+            <result column="ordertime" property="ordertime"></result>
+            <result column="total" property="total"></result>
+        </collection>
+    </resultMap>
+
     <!--删除操作-->
     <delete id="deleteById" parameterType="long">
         delete from user where id=#{id}
@@ -33,6 +46,11 @@
     <!--根据id进行查询-->
     <select id="getById" resultType="com.zjq.mybatis.entity.User" parameterType="long">
         select * from user where id=#{id}
+    </select>
+
+    <!--获取所有用户和订单信息-->
+    <select id="findAllUserAndOrders" resultMap="userMap">
+        select *,o.id oid from user u left join orders o on u.id=o.uid
     </select>
 
 </mapper>

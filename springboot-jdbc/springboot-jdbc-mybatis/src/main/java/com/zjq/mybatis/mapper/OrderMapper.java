@@ -19,9 +19,9 @@ public interface OrderMapper {
 
 
 	/**
-	 * 通过用户id查询用户
-	 * @param uid
+	 * 通过订单id查询用户
+	 * @param id
 	 * @return
 	 */
-	User getById(Long uid);
+	User getUserByOrderId(Long id);
 }
