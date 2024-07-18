@@ -1,0 +1,7 @@
+server:
+  port: 17006
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
