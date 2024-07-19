@@ -22,6 +22,9 @@
         <module>springboot-activiti</module>
         <module>springboot-security</module>
         <module>springboot-security-thymeleaf</module>
+        <module>springboot-swagger</module>
+        <module>springboot-swagger-starter</module>
+        <module>springboot-swagger-knife4j</module>
     </modules>
     <packaging>pom</packaging>
 
