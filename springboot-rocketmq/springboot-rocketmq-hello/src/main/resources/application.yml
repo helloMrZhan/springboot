@@ -1,0 +1,8 @@
+server:
+  port: 17008
+
+rocketmq:
+  nameServer: 127.0.0.1:9876
+  producer:
+    group: zjq-producer
+
