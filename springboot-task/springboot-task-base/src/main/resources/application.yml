@@ -1,0 +1,7 @@
+server:
+  port: 10888
+
+zjq:
+  task:
+    # cron表达式 每隔8秒执行一次
+    cron: 0/8 * * * * ?
