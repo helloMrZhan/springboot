@@ -1,0 +1,80 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: quartz
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/job-mysql?useUnicode=true&useSSL=false&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    # hikari连接池
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+      maximum-pool-size: 10
+      #最小空闲连接，默认值 10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+      minimum-idle: 2
+      #连接超时时间:毫秒，小于250毫秒，否则被重置为默认值30秒
+      connection-timeout: 60000
+      #空闲连接超时时间，默认值600000ms（10分钟），大于等于max-lifetime且max-lifetime>0，会被重置为0；
+      #不等于0且小于10秒，会被重置为10秒。
+      #只有空闲连接数大于最大连接数且空闲时间超过该值，才会被释放(自动释放过期链接)
+      idle-timeout: 600000
+      #连接最大存活时间.不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+      max-lifetime: 640000
+      #连接测试查询
+      connection-test-query: SELECT 1
+
+
+  quartz:
+    properties:
+      org:
+        quartz:
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            # 守护线程
+            makeThreadsDaemons: true
+            # 线程数量
+            threadCount: 20
+            # 线程优先级
+            threadPriority: 5
+            # 线程前缀
+            threadNamePrefix: quartz-
+            # 加载任务代码的ClassLoader是否从外部继承
+            threadsInheritContextClassLoaderOfInitializingThread: true
+          jobStore:
+            # 是否使用properties作为数据存储
+            useProperties: false
+            # 数据库中表的命名前缀
+            tablePrefix: qrtz_
+            # 是否为集群
+            isClustered: true
+            # 集群检查时间间隔，当有节点宕机的时候，其他节点等待时长后开始执行任务度，单位为毫秒，默认值15S
+            clusterCheckinInterval: 5000
+            # 调度引擎设置触发器超时的"临界值"，单位为毫秒，默认值15S
+            misfireThreshold: 10000
+            # 是否事务隔离级别
+            txIsolationLevelReadCommitted: true
+            # 存储的事务管理类型
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            # MySQL使用的Delegate类型
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          scheduler:
+            # 集群名称
+            instanceName: QuartzCluster
+            # 集群名称节点的命名规则
+            instanceId: AUTO
+            # 是否使用当前数据源的事务环境，默认false
+            wrapJobExecutionInUserTransaction: false
+
+#mapper 别名扫描
+mybatis:
+  type-aliases-package: com.example.quartz. entity
+  #mapper.xml文件位置,如果没有映射文件，请注释掉
+  mapper-locations: classpath:mappers/*/*.xml
+  #数据库类型
+  configuration.database-id: mysql
+  #自动驼峰转换
+  configuration.map-underscore-to-camel-case: true
+
