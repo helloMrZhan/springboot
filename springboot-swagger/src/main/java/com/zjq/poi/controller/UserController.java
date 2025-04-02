@@ -1,6 +1,6 @@
-package com.zjq.swagger.controller;
+package com.zjq.poi.controller;
 
-import com.zjq.swagger.entity.User;
+import com.zjq.poi.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
