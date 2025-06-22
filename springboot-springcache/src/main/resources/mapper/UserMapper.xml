@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjq.springcache.mapper.UserMapper">
+
+    <resultMap id="user" type="com.zjq.springcache.entity.User">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+    </resultMap>
+
+    <resultMap id="userMap" type="com.zjq.springcache.entity.User">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
+        <result column="age" property="age"></result>
+    </resultMap>
+
+    <!--删除操作-->
+    <delete id="deleteById" parameterType="long">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--修改操作-->
+    <update id="update" parameterType="com.zjq.springcache.entity.User">
+        update user set name=#{name},age=#{age} where id =#{id}
+    </update>
+
+    <!--插入操作-->
+    <insert id="add" parameterType="com.zjq.springcache.entity.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into user(name,age) values(#{name},#{age})
+    </insert>
+
+    <!--查询操作-->
+    <select id="list" resultType="com.zjq.springcache.entity.User">
+        select * from user
+    </select>
+
+    <!--根据id进行查询-->
+    <select id="getById" resultType="com.zjq.springcache.entity.User" parameterType="long">
+        select * from user where id=#{id}
+    </select>
+
+
+</mapper>
