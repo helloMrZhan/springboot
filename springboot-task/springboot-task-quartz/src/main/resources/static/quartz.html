@@ -145,7 +145,7 @@
 </div>
 
 <footer align="center">
-    <p>&copy; Quartz 任务管理</p>
+    <p>&copy; Quartz 任务管理 by 共饮一杯无</p>
 </footer>
 
 <script>
@@ -261,7 +261,7 @@
             //更新任务
             update: function(){
                 this.$http.post
-                ('job/reschedulejob',
+                ('job/update',
                     {"jobClassName":this.updateform.jobName,
                         "jobGroupName":this.updateform.jobGroup,
                         "cronExpression":this.updateform.cronExpression
