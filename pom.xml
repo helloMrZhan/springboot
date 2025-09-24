@@ -27,6 +27,7 @@
         <module>springboot-swagger-knife4j</module>
         <module>springboot-excel</module>
         <module>springboot-rocketmq</module>
+        <module>springboot-rabbitmq</module>
     </modules>
     <packaging>pom</packaging>
 
