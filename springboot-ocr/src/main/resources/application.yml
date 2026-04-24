@@ -1,0 +1,15 @@
+server:
+  port: 17008
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+ocr:
+  tessdata-path: classpath:tessdata
+

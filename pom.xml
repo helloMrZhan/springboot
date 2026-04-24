@@ -28,6 +28,7 @@
         <module>springboot-excel</module>
         <module>springboot-rocketmq</module>
         <module>springboot-rabbitmq</module>
+        <module>springboot-OCR</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -128,6 +129,13 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
                 <version>0.11.2</version>
+            </dependency>
+
+            <!--postgresql连接-->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.2.8</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
